@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box
+}
+body{      
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+}
+article{
+    box-sizing: border-box;
+    width: 500px;
+    margin: 0.5%;
+    padding: 10px;
+    background: #eaeaea;
+    h1,p,label{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    label{
+        color:#537e27
+    }
+}
+.total{
+    background-color: #537e27;
+    color: #fff;
+    label{
+        color:#fff
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "dheo/payment-gateway",
+    "type": "Project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rangeldheo",
+            "email": "rangeldheo@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\":"app",
+            "Interfaces\\":"app/interfaces",
+            "Utils\\":"app/utils"
+        }
+    },
+    "require": {}
+}
