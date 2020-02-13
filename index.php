@@ -13,6 +13,8 @@
     <?php
     require 'vendor/autoload.php';
 
+    use App\Adress;
+    use App\Client;
     use App\Product;
     use App\ProductCollection;
     use Utils\FormatValues;
@@ -26,7 +28,7 @@
     ]);
     $objProductB = new Product([
         'id' => 2,
-        'name' => 'Curso de Javasceipt',
+        'name' => 'Curso de Javascript',
         'desc' => 'Lorem Impum dolor eat rumsted stofes ituam',
         'price' => '1125.50'
     ]);
@@ -36,6 +38,26 @@
         'desc' => 'Lorem Impum dolor eat rumsted stofes ituam',
         'price' => '1210.00'
     ]);
+
+
+    $objClient = new Client(
+        [
+            'id' => 1,
+            'name' => 'Rangel Dheo',
+            'age' => '37',
+            'cpf' => '069.505.786-36'
+        ],
+        new Adress([
+            'country'  => 'Brasil',
+            'region'  => 'MG',
+            'city'  => 'Arcos',
+            'district'  => 'Centro',
+            'street'  => 'Jarbas Ferreira Pires',
+            'number'  => '220',
+            'complement'  => 'Apto 105',
+            'zipCode'  => '35588000'
+        ])
+    );
 
     $productCollection = new ProductCollection();
     $productCollection->addProductIntoList($objProductA);
@@ -58,9 +80,6 @@
         <h1> Qtd de produtos: <?= $productCollection->count() ?> </h1>
         <label><?= FormatValues::money($productCollection->getTotal()); ?></label>
     </article>
-    <?php
-
-    ?>
 </body>
 
 </html>
