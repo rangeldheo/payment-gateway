@@ -14,7 +14,7 @@ class Client implements IClient
     private $cpf;
     private $adress;
 
-    public function __construct(array $attributes,IAdress $adress = null)
+    public function __construct(array $attributes, IAdress $adress = null)
     {
         $this->id   = (int) $attributes['id'];
         $this->name = (string) $attributes['name'];
@@ -30,5 +30,10 @@ class Client implements IClient
     }
     public function getPayerAdress()
     {
+        return $this->adress;
+    }
+    public function __get($name)
+    {
+        return $this->$name;
     }
 }

@@ -6,6 +6,7 @@
 body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-color: #ffffff;
+  font-size: 0.9rem;
 }
 
 article {
@@ -26,12 +27,22 @@ article label {
   color: #537e27;
 }
 
-.total {
+.total, .cliente, .endereco {
   background-color: #537e27;
   color: #fff;
 }
 
-.total label {
+.total label, .cliente label, .endereco label {
+  display: block;
+  width: 100%;
   color: #fff;
+}
+
+.cliente {
+  background-color: #cf8045;
+}
+
+.endereco {
+  background-color: #408080;
 }
 /*# sourceMappingURL=style.css.map */

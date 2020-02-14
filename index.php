@@ -12,13 +12,20 @@
 
     <?php
     require 'vendor/autoload.php';
+    require 'app/TransactionConfig.php';
 
     use App\Adress;
+    use App\Cielo;
     use App\Client;
     use App\Product;
     use App\ProductCollection;
+    use App\Sale;
+    use App\SandBox;
+    use App\Transaction;
+    use App\TransactionConfig;
+    use Tools\CreditCard;
     use Utils\FormatValues;
-    use Utils\RealBRL;
+
 
     $objProductA = new Product([
         'id' => 1,
@@ -64,6 +71,20 @@
     $productCollection->addProductIntoList($objProductB);
     $productCollection->addProductIntoList($objProductC);
 
+    $objSale = new Sale($productCollection);
+
+    $objGateWay = new Cielo(new SandBox());
+
+    $objPaymentMethod = new CreditCard($objClient);
+
+    $objTransaction = new Transaction();
+    $objTransaction->commit($objSale, $objClient, $objGateWay, $objPaymentMethod);
+
+
+    /**
+     * Views
+     */
+
     for ($productCollection->rewind(); $productCollection->valid(); $productCollection->next()) {
         $product = $productCollection->current();
     ?>
@@ -77,8 +98,20 @@
 
     ?>
     <article class="total">
-        <h1> Qtd de produtos: <?= $productCollection->count() ?> </h1>
-        <label><?= FormatValues::money($productCollection->getTotal()); ?></label>
+        <h1> Qtd de produtos: <?= $objSale->items->count() ?> </h1>
+        <label><?= FormatValues::money($objSale->calculateTotal()); ?></label>
+    </article>
+    <article class="cliente">
+        <h1>Cliente: <?= $objClient->name ?> </h1>
+        <label>Cpf: <?= $objClient->cpf ?></label>
+    </article>
+    <article class="endereco">
+        <h1>Endereço</h1>
+        <label>Estado: <?= $objClient->adress->region ?></label>
+        <label>Cidade: <?= $objClient->adress->city ?></label>
+        <label>Bairro: <?= $objClient->adress->district ?></label>
+        <label>Rua: <?= $objClient->adress->street ?></label>
+        <label>Número: <?= $objClient->adress->number ?></label>
     </article>
 </body>
 
