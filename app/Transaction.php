@@ -19,6 +19,7 @@ class Transaction
         $this->client = $client;
         $this->gateway = $gateway;
         $this->paymentMethod = $paymentMethod;
+        return $this->gateway->paymentProcessing();
     }
     public function __get($name)
     {
